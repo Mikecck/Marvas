@@ -1,4 +1,3 @@
-from multiprocessing import Condition
 from django.db import models
 
 from django.dispatch import receiver
@@ -54,7 +53,6 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=False)
-    Condition = models.BooleanField(default=False, null=True, blank=False)
     date_create = models.DateTimeField('date_create')
 
     # Image
