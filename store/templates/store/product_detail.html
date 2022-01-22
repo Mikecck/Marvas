@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product_detail.css' %}">
+    <div id="detail-wrapper">
+        <div id="img-and-btn-wrapper">
+            <img class="thumbnail" src="{{product.imageURL}}">
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Add to Cart</button>
+        </div>
+        <div id="primary-attributes-wrapper">
+            <p>Name: {{product.name}}</p>
+            <p>Price: {{product.price}}</p>
+            <p>
+                Shipping required:
+                {% if product.digital %}
+                    No
+                {% elif not product.digital %}
+                    Yes
+                {% endif %}
+            </p>
+            <br>
+            <p>
+                Tags:
+                {% for category in product.categories.all %}
+                    <a href="{% url 'store' %}?categories={{category.id}}">{{category.name}}</a>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+{% endblock %}
