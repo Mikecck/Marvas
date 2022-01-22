@@ -37,7 +37,7 @@
 							<input type="text" class="bksearch">
 							<div class="bklist">
 							</div>
-						 </div>
+						</div>
                     </div>
 
                     <hr>
@@ -82,7 +82,7 @@
 		// to make it a string
 		// otherwise it will throw an exception
 		var shipping = '{{order.shipping}}'
-		var total = {{order.total_price}}
+		var total = '{{order.total_price}}'
 
 		if(shipping == 'False'){
 			document.getElementById('shipping-info').innerHTML = ''
