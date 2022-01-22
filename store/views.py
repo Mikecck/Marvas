@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 from django.core.paginator import Paginator
 
@@ -19,6 +19,21 @@ from .filters import *
 from .utils import *
 
 # Create your views here.
+
+def listCustomers(request):
+    qs = Customer.objects.values()
+
+    # ph = request.Get.get('id', None)
+
+    # if ph:
+    #     qs = qs.filter(id=ph)
+
+    retStr = ''
+    for customer in qs:
+        for name, value in customer.items():
+            retStr += f'{name} : {value}'
+        retStr += '<br>'
+    return HttpResponse(retStr)
 
 def store(request):
     context = {}

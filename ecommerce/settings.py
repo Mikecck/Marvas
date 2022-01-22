@@ -136,11 +136,11 @@ else:
     # Only for production
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': config('MYSQL_DB_NAME'),
-            'USER': config('MYSQL_DB_USERNAME'),
-            'PASSWORD': config('MYSQL_DB_PASSWORD'),
-            'HOST': config('MYSQL_DB_HOSTNAME'),
+            'ENGINE': 'django_cockroachdb',
+            'NAME': config('cockroachdb_DB_NAME'),
+            'USER': config('cockroachdb_DB_USERNAME'),
+            'PASSWORD': config('cockroachdb_DB_PASSWORD'),
+            'HOST': config('cockroachdb_DB_HOSTNAME'),
         }
     }
 
