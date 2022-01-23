@@ -63,6 +63,7 @@ def cookie_cart(request):
 # return appropriate cart data
 def cart_data(request):
     if request.user.is_authenticated:
+        id = request.user.id
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         orderitems = order.orderitem_set.all()
@@ -74,6 +75,8 @@ def cart_data(request):
         orderitems = cookie_data['orderitems']
 
     return {
+        'id':id,
+        'customer': customer,
         'total_quantity': total_quantity,
         'order': order,
         'orderitems': orderitems
