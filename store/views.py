@@ -41,6 +41,7 @@ def sign_in(request):
     else:
         return JsonResponse({'ret' : 1, 'msg': 'Wrong user name or password'})
 
+
 def listCustomers(request):
     qs = Customer.objects.values()
 
@@ -73,23 +74,39 @@ def store(request):
 
     # context['products'] = products
     context['product_page_obj'] = product_page_obj
-    context['total_quantity'] = data['total_quantity']
+    context['total_quantity'] = data['total_quantity'] 
 
     return render(request, 'store/store.html', context=context)
 
+# data_list = {
+#         'context' : context,
+#         'data' : data,
+#         'product_filter' : product_filter,
+#         'page_number' : page_number
+#     }
+#     return JsonResponse(data_list, safe=False)
 
 def cart(request):
     context = cart_data(request)
 
     return render(request, 'store/cart.html', context=context)
 
+    # data_list = {
+    #     'context' : context,
+    # }
+    # return JsonResponse(data_list, safe=False)
 
 def checkout(request):
     context = cart_data(request)
 
     context['barikoi_autocomplete_api_key'] = settings.BARIKOI_AUTOCOMPLETE_API_KEY
-
+    
     return render(request, 'store/checkout.html', context=context)
+
+    # data_list = {
+    #     'context' : context,
+    # }
+    # return JsonResponse(data_list, safe=False)
 
 def update_item(request):
     data = json.loads(request.body)
@@ -162,3 +179,10 @@ class ProductDetailView(DetailView):
         context['total_quantity'] = data['total_quantity']
         context['product'] = product
         return render(request, self.template_name, context)
+
+        # data_total = {
+        #         'product' : product,
+        #         'data' : 'data',
+        #         'total_quantity' : 'total_quantity',
+        # }
+        # return JsonResponse(data_total, safe=False)
