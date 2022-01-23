@@ -11,5 +11,6 @@ urlpatterns = [
     path('process_order/', views.process_order, name='process_order'),
     path('product_detail/<int:pk>', views.ProductDetailView.as_view(), name='product_detail'),
 
-    path('customers/', views.listCustomers)
+    path('customers/', views.listCustomers),
+    path('signin/', views.sign_in)
 ]

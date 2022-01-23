@@ -52,7 +52,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    digital = models.BooleanField(default=False, null=True, blank=False)
+    condition = models.BooleanField(default=False, null=True, blank=False)
     date_create = models.DateTimeField('date_create')
 
     # Image
@@ -108,7 +108,7 @@ class Order(models.Model):
         shipping = False
         orderitems = self.orderitem_set.all()
         for orderitem in orderitems:
-            if orderitem.product.digital == False:
+            if orderitem.product.condition == False:
                 shipping = True
         return shipping
 

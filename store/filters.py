@@ -10,6 +10,6 @@ class ProductFilter(django_filters.FilterSet):
         model = Product
         fields = [
             'name',
-            'digital',
+            'condition',
             'categories',
         ]
